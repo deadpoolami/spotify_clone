@@ -1,4 +1,4 @@
-// Song data structure
+
 const songs = [
     {
         name: "Bargad",
@@ -26,7 +26,7 @@ const songs = [
     }
 ];
 
-// Global variables
+
 const audio = document.getElementById("audioplayer");
 const playPauseBtn = document.getElementById("playpause");
 const prevBtn = document.getElementById("prevBtn");
@@ -45,32 +45,30 @@ const searchResults = document.getElementById("searchResults");
 let currentSongIndex = -1;
 let isPlaying = false;
 let currentVolume = 70;
-let queue = [...songs]; // Copy of songs array for queue management
+let queue = [...songs];
 
-// Initialize
 document.addEventListener("DOMContentLoaded", () => {
     initializePlayer();
     setupEventListeners();
     setupNavigation();
     setupSearch();
     setupVolume();
-    
-    // Set initial volume
+
     audio.volume = currentVolume / 100;
 });
 
-// Initialize player
+
 function initializePlayer() {
     audio.volume = currentVolume / 100;
     updatePlayPauseButton();
 }
 
-// Setup all event listeners
+
 function setupEventListeners() {
-    // Play/Pause button
+  
     playPauseBtn.addEventListener("click", togglePlayPause);
     
-    // Previous/Next buttons
+
     prevBtn.addEventListener("click", playPrevious);
     nextBtn.addEventListener("click", playNext);
     
@@ -92,7 +90,6 @@ function setupEventListeners() {
         updatePlayPauseButton();
     });
     
-    // Play buttons on cards
     document.querySelectorAll(".play-btn").forEach(button => {
         button.addEventListener("click", (e) => {
             const songName = button.dataset.name;
@@ -101,7 +98,6 @@ function setupEventListeners() {
     });
 }
 
-// Setup navigation between views
 function setupNavigation() {
     const navItems = document.querySelectorAll(".nav-item");
     const views = {
@@ -340,3 +336,4 @@ document.addEventListener("keydown", (e) => {
         playNext();
     }
 });
+
